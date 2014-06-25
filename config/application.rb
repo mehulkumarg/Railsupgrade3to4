@@ -4,14 +4,8 @@ require 'rails/all'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-if defined?(Bundler)
-  # If you precompile assets before deploying to production,
-  Bundler.require *Rails.groups(:assets => %w(development test))
-  # If you want your assets lazily compiled in production,
-  # Bundler.require(:default, :assets, Rails.env)
-end
+Bundler.require(:default, Rails.env)
 
 module RailsUpgrade3to4
   class Application < Rails::Application
@@ -48,6 +42,7 @@ module RailsUpgrade3to4
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
+    config.active_record.whitelist_attributes = false
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]

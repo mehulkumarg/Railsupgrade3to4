@@ -14,7 +14,7 @@ RailsUpgrade3to4::Application.configure do
 
   # For nginx:
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
-
+  config.eager_load = true
   # If you have no front-end server that supports something like X-Sendfile,
   # just comment this out and Rails will serve the files
 
@@ -49,6 +49,7 @@ RailsUpgrade3to4::Application.configure do
 
   # Compress JavaScript and CSS
   config.assets.compress = true
+  config.assets.js_compressor = :uglifier
 
   # Don't fallback to assets pipeline
   config.assets.compile = false
